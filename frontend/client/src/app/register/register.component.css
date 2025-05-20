@@ -1,0 +1,48 @@
+.login-box {
+  width: 340px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-custom {
+  background-color: #00d26a;
+  color: white;
+  border-radius: 10px;
+}
+
+.back {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0px;
+  font-size: 20px;
+  background-color: white;
+}
+
+
+.btn-custom:hover {
+  background-color: #00b75a;
+}
+
+i {
+  font-size: 28px;
+}
+
+i:hover {
+  color: #00b75a;
+
+}
+
+input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.label {
+  margin: 0;
+}

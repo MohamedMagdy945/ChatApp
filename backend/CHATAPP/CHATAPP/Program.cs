@@ -1,6 +1,12 @@
 
+using System.Text;
 using API.Data;
+using API.Extensions;
+using API.Interfaces;
+using API.services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CHATAPP
 {
@@ -15,10 +21,9 @@ namespace CHATAPP
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
-            builder.Services.AddDbContext<DataContext>(opt =>
-            {
-                opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
+            builder.Services.AddApplicationServices(builder.Configuration);
+            builder.Services.AddCors();
+            builder.Services.AddIdentityServices(builder.Configuration);
 
             var app = builder.Build();
 
@@ -30,6 +35,9 @@ namespace CHATAPP
 
             app.UseHttpsRedirection();
 
+            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
