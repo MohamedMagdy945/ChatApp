@@ -1,0 +1,129 @@
+<div class="d-flex details" *ngIf="member">
+    <div class="user-details">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="action-buttons">
+                    <button class="btn btn-message">
+                        <i class="bi bi-envelope"></i>Message
+                    </button>
+                    <button class="btn btn-like">
+                        <i class="bi bi-heart"></i> Like
+                    </button>
+                </div>
+                <div class="profile-avatar">
+                    <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
+                        class="card-img-top img-thumbnail">
+                </div>
+                <h1 class="profile-name">{{member.knownAs}}</h1>
+            </div>
+
+
+            <div class="tab-content active">
+                <div class="profile-info">
+                    <div class="profile-info">
+                        <h2 class="info-title">Location</h2>
+                        <p class="info-value">Hatteras, Antigua and Barbuda</p>
+
+                        <h2 class="info-title">Age</h2>
+                        <p class="info-value">70</p>
+
+                        <h2 class="info-title">Last Active</h2>
+                        <p class="info-value">June 13, 2020</p>
+
+                        <h2 class="info-title">Member Since</h2>
+                        <p class="info-value">[Registration Date]</p>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-box">
+                            <div class="stat-value">1,234</div>
+                            <div class="stat-label">Profile Views</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">56</div>
+                            <div class="stat-label">Likes</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Comments</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+                    Interests content will appear here
+                </div>
+
+                <div class="tab-content">
+                    Photo gallery will appear here
+                </div>
+
+                <div class="tab-content">
+                    Messages will appear here
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-tabs">
+        <tabset class="member-tabset">
+            <!-- About Tab -->
+            <tab heading="About {{member.knownAs}}" id="tab1" class="tab">
+                <div class="profile-info">
+                    <div class="info-section">
+                        <h2 class="info-title">
+                            <i class="bi bi-card-text"></i> Description
+                        </h2>
+                        <p class="profile-description">{{ member.introduction || 'No description available' }}</p>
+                    </div>
+
+                    <div class="info-section">
+                        <h2 class="info-title">
+                            <i class="bi bi-search"></i> Looking For
+                        </h2>
+                        <p>{{ member.lookingFor || 'Not specified' }}</p>
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Interests" id="tab2" class="tab">
+                <div class="profile-info">
+                    <div class="info-section">
+                        <h2 class="info-title">
+                            <i class="bi bi-card-checklist"></i>Interests
+                        </h2>
+                        <p>{{ member.interests || 'No interests listed' }}</p>
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Photos" id="tab2" class="tab">
+                <div class="profile-info">
+                    <div class="info-section">
+                        <h2 class="info-title">
+                            <i class="bi bi-file-image"></i> Photo
+                        </h2>
+                        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"
+                            class="ngx-gallery custom-gallery"></ngx-gallery>
+
+                    </div>
+                </div>
+            </tab>
+
+
+            <tab heading="Messages" id="tab2" class="tab">
+                <div class="profile-info">
+                    <div class="info-section">
+                        <h2 class="info-title">
+                            <i class="bi bi-chat"></i> Message
+                        </h2>
+                        <p>Message will go here</p>
+                    </div>
+                </div>
+            </tab>
+
+
+
+        </tabset>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+:root {
+  --primary-color: #00b75a;
+  --primary-dark: #008e46;
+  --secondary-color: #333333;
+  --light-gray: #f5f5f5;
+  --border-color: #e0e0e0;
+  --text-color: #333;
+
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  min-height: 100vh;
+  max-width: 700px;
+}
+
+.main-content {
+  background-color: #fff;
+  padding: 40px 60px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+}
+
+body {
+  background-color: #f7f9fb;
+
+}
+
+
+.profile-tabs .nav-link {
+  color: #555;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 12px 15px;
+  text-align: center;
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.profile-tabs .nav-link:hover {
+  color: #0011ff;
+  background-color: rgba(63, 81, 181, 0.05);
+}
+
+.profile-tabs .nav-link.active {
+  color: #0011ff;
+  font-weight: 600;
+  border: none;
+  background-color: transparent;
+}
+
+.profile-tabs .nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #0011ff;
+}
+
+/* توزيع متساوي للتبويبات */
+.profile-tabs .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.custom-gallery {
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  background: #fff;
+  padding: 10px;
+}
+
+
+.custom-gallery {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-gallery .ngx-gallery-arrow-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.custom-gallery .ngx-gallery-arrow {
+  color: white;
+}
+
+.custom-gallery .ngx-gallery-thumbnail {
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.custom-gallery .ngx-gallery-thumbnail.ngx-gallery-active {
+  border-color: #007bff;
+}

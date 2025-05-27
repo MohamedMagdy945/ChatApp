@@ -1,0 +1,144 @@
+/* تنسيق عام لـ Tabset */
+.member-tabset {
+    margin-top: 20px;
+    border: none;
+}
+
+/* تنسيق تبويبات التنقل */
+.member-tabset .nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.member-tabset .nav-link {
+    border: none;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 12px 20px;
+    transition: all 0.3s;
+}
+
+.member-tabset .nav-link:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+    border: none;
+}
+
+.member-tabset .nav-link.active {
+    color: #0d6efd;
+    border-bottom: 3px solid #0d6efd;
+    background-color: transparent;
+}
+
+/* تنسيق محتوى التبويبات */
+.profile-info {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 15px;
+}
+
+.info-section {
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-section:last-child {
+    border-bottom: none;
+}
+
+.section-title {
+    color: #343a40;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title i {
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.profile-description,
+.profile-content {
+    color: #495057;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.no-content-message {
+    color: #6c757d;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+/* تنسيق معرض الصور (عند إضافته لاحقاً) */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 10px 0;
+}
+
+/* تنسيق قسم الرسائل (عند إضافته لاحقاً) */
+.message-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.member-tabset .nav-tabs {
+    display: flex;
+}
+
+.member-tabset .nav-link {
+    flex: 1;
+    /* يجعل كل العناصر متساوية في العرض */
+    text-align: center;
+}
+
+.member-tabset .nav-link {
+    width: 25%;
+    /* إذا كان لديك 4 تبويبات */
+    display: inline-block;
+    text-align: center;
+}
+
+/* تنسيق عام لـ Tabset */
+.custom-tabset {
+    width: 100%;
+}
+
+/* تنسيق تبويبات التنقل */
+.custom-tabset .nav-tabs {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.custom-tabset .nav-item {
+    flex: 1;
+    text-align: center;
+}
+
+.custom-tabset .nav-link {
+    display: block;
+    padding: 12px 5px;
+    color: #6c757d;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    border-bottom: 3px solid transparent;
+}
+
+.custom-tabset .nav-link:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.custom-tabset .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    font-weight: 600;
+    background-color: transparent;
+}
