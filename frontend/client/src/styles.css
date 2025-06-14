@@ -17,6 +17,10 @@
   max-width: 700px;
 }
 
+.mytext-primary {
+  color: var(--primary-color);
+}
+
 .main-content {
   background-color: #fff;
   padding: 40px 60px;
@@ -31,6 +35,54 @@ body {
 
 }
 
+.btn-custom {
+  background-color: #00d26a;
+  color: white;
+  border-radius: 10px;
+}
+
+
+.back {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0px;
+  font-size: 20px;
+  background-color: white;
+}
+
+.custom-btn {
+  background-color: #00d26a;
+  color: white;
+  border: 1px solid #00d26a;
+  transition: background-color 0.3s;
+}
+
+.custom-btn:hover {
+  background-color: #00b85c;
+  color: white;
+}
+
+.custom-btn.active {
+  background-color: #00994d;
+  box-shadow: 0 0 0 2px rgba(0, 210, 106, 0.5);
+}
+
+.btn-custom:hover {
+  transition: background-color 0.3s ease;
+  background-color: #00b75a;
+  color: white;
+}
+
+.ml-15 {
+  margin-left: 15px
+}
+
+
+
+.main-cl-text {
+  color: var(--primary-color)
+}
 
 .profile-tabs .nav-link {
   color: #555;
@@ -44,12 +96,10 @@ body {
 }
 
 .profile-tabs .nav-link:hover {
-  color: #0011ff;
   background-color: rgba(63, 81, 181, 0.05);
 }
 
 .profile-tabs .nav-link.active {
-  color: #0011ff;
   font-weight: 600;
   border: none;
   background-color: transparent;
@@ -62,10 +112,8 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #0011ff;
 }
 
-/* توزيع متساوي للتبويبات */
 .profile-tabs .nav-item {
   flex: 1;
   text-align: center;
@@ -103,5 +151,52 @@ body {
 }
 
 .custom-gallery .ngx-gallery-thumbnail.ngx-gallery-active {
-  border-color: #007bff;
+  border-color: #0011ff;
+}
+
+
+.member-tabset {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 1000px;
+  background: white;
+}
+
+.member-tabset .nav-tabs>li.active>a,
+.member-tabset .nav-tabs>li.active>a:focus,
+.member-tabset .nav-tabs>li.active>a:hover {
+  border-bottom: 2px solid #00d26a;
+  color: #00d26a;
+  font-weight: 600;
+}
+
+.custom-tabs .nav-tabs {
+
+  width: 70%;
+}
+
+.profile-info {
+  padding: 20px;
+  background-color: #fff;
+}
+
+
+.info-title {
+  color: #00b75a;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.profile-description {
+  line-height: 1.6;
+  color: #495057;
+}
+
+.ml-2 {
+  margin-left: 30px;
 }

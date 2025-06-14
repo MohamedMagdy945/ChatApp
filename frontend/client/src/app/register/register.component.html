@@ -1,26 +1,63 @@
-<div class="main-container">
+<div class="main-container ">
     <div class="main-content">
         <div class="login-box">
             <button class="back" (click)="back()">
                 <i class="bi bi-arrow-right-circle"></i>
             </button>
-            <h3 class="mb-4 text-center">Sign Up</h3>
-            <form #loginForm="ngForm" autocomplete="off">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input name="username" type="text" class="form-control" id="username"
-                        placeholder="Enter your username" [(ngModel)]="model.username">
+            <h1 class="mb-4 text-center main-cl-text">Sign Up</h1>
+            <form [formGroup]="registerForm" autocomplete="off" (ngSubmit)="registerForm.valid && register()">
+                <div class="mb-4">
+                    <app-text-input [formControl]='registerForm.controls["username"]' [label]='"username"'
+                        [type]='"text"'></app-text-input>
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" id="password"
-                        placeholder="Enter your password" [(ngModel)]="model.password">
+                <div class="mb-4">
+                    <app-text-input [formControl]='registerForm.controls["knownAs"]' [label]='"KnownAs"'
+                        [type]='"text"'></app-text-input>
                 </div>
 
+                <div class="mb-4">
+                    <app-text-input [formControl]='registerForm.controls["city"]' [label]='"City"'
+                        [type]='"text"'></app-text-input>
+                </div>
+                <div class="mb-4">
+                    <app-text-input [formControl]='registerForm.controls["country"]' [label]='"Country"'
+                        [type]='"text"'></app-text-input>
+                </div>
+                <div class="mb-4">
+                    <app-date-input [formControl]='registerForm.controls["dateOfBirth"]' [label]='"Date Of Birth"'
+                        [maxDate]="maxDate"></app-date-input>
+                </div>
+                <div class="mb-4 d-flex">
+                    <label for="country" class="form-label" style="margin-right: 15px">Gender:</label>
+                    <label class="form-label d-flex align-center">
+                        <input type="radio" value="male" formControlName="gender" style="margin-right: 5px;">
+                        Male
+                    </label>
+                    <label class="form-label d-flex align-center ml-15">
+                        <input type="radio" value="female" formControlName="gender" style="margin-right: 5px;">
+                        Female
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <app-text-input [formControl]='registerForm.controls["password"]' [label]='"password"'
+                        [type]='"password"'></app-text-input>
+                </div>
 
-                <button type="submit" class="btn btn-custom w-100" (click)="register()">Register</button>
+                <div class="mb-3">
+                    <app-text-input [formControl]='registerForm.controls["confirmPassword"]' [type]='"password"'
+                        [label]='"confirm Password"' [type]='"password"'></app-text-input>
+
+                </div>
+                <div class="row" *ngIf="validationErrors.length > 0">
+                    <ul class="text-danger">
+                        <li *ngFor="let error of validationErrors">
+                            {{ error }}
+                        </li>
+                    </ul>
+                </div>
+                <button type="submit" [disabled]="!registerForm.valid" class="btn btn-custom w-100">Register</button>
             </form>
         </div>
-    </div>
 
+    </div>
 </div>

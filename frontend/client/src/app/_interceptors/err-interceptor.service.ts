@@ -31,8 +31,10 @@ export class errorInterceptorService implements HttpInterceptor {
                   }
                 }
                 throw modelsStateErrors.flat();
-              } else {
+              } else if (typeof error.error === 'object') {
                 toastr.error(error.error?.message || 'Bad Request', '400');
+              } else {
+                toastr.error(error.error, error.status);
               }
               break;
             case 401:

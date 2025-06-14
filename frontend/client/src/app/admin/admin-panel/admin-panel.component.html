@@ -1,0 +1,21 @@
+<div class="profile-tabs admin-container">
+
+    <tabset class="member-tabset custom-tabs">
+        <tab heading="User Management" *appHasRole='["Admin"]' id="tab1" class="tab">
+            <div class="">
+                <div class="">
+                    <app-user-management></app-user-management>
+                </div>
+            </div>
+        </tab>
+
+        <tab heading="Edit Photos" *appHasRole='["Admin","Moderator"]' id="tab2" class="tab">
+            <div class="">
+                <div class="">
+                    <app-photo-management></app-photo-management>
+                </div>
+            </div>
+        </tab>
+
+    </tabset>
+</div>

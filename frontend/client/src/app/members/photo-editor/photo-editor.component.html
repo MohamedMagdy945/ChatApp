@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-2" *ngFor="let photo of member.photos">
+        <img src="{{photo.url}}" alt="{{photo.url}}" class="img-thumbnail p-1">
+        <div class="d-flex mt-2">
+            <button class="btn btn-sm" [disabled]="photo.isMain" (click)="setMainPhoto(photo)"
+                [ngClass]='photo.isMain ? "btn-success active" : "btn btn-outline-success"'>Main</button>
+            <button class="btn btn-sm btn-danger" [disabled]="photo.isMain" (click)="deletePhoto(photo.id)"><i
+                    class="fa fa-trash"></i></button>
+        </div>
+    </div>
+</div>
+
+<div class="card p-3 shadow-sm mt-3">
+    <div class="text-center">
+        <h5 class="fw-bold mb-3 text-success">Upload Photo</h5>
+
+        <div class="mb-3">
+            <input type="file" ng2FileSelect [uploader]="uploader" class="form-control" accept="image/*" multiple />
+        </div>
+        <ul class="list-group mb-3" *ngIf="uploader.queue.length > 0">
+            <li class="list-group-item" *ngFor="let item of uploader.queue">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        📷 {{ item?.file?.name }}
+                        ({{ item?.file?.size / 1024 | number: '1.0-1' }} KB)
+                    </div>
+                    <div>
+                        <button class="btn btn-sm btn-outline-success me-1" (click)="item.upload()"
+                            [disabled]="item.isUploading || item.isSuccess">
+                            Upload
+                        </button>
+                        <button class="btn btn-sm btn-outline-warning me-1" (click)="item.cancel()"
+                            [disabled]="!item.isUploading">
+                            Cancel
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" (click)="item.remove()">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+
+                <div class="progress mt-2" *ngIf="item.isUploading || item.progress > 0">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
+                        aria-valuemax="100">
+                        {{ item.progress }}%
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="d-flex justify-content-center gap-2 mt-3">
+            <button class="btn btn-success btn-sm" (click)="uploader.uploadAll()"
+                [disabled]="!uploader.getNotUploadedItems().length">
+                Upload All
+            </button>
+
+            <button class="btn btn-warning btn-sm" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                Cancel All
+            </button>
+
+            <button class="btn btn-danger btn-sm" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                Remove All
+            </button>
+        </div>
+    </div>
+</div>

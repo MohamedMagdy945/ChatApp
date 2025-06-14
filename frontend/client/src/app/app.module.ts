@@ -11,7 +11,7 @@ import {
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -26,8 +26,20 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { FullPageComponent } from './full-page/full-page.component';
 import { jwtInerceptor } from './_interceptors/jwt.interceptor';
 import { errorInterceptorService } from './_interceptors/err-interceptor.service';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TestingComponent } from './testing/testing.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { loadingInterceptor } from './_interceptors/loading.interceptor';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { RolesModalComponent } from './Modals/roles-modal/roles-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +58,16 @@ import { TestingComponent } from './testing/testing.component';
     MemberCardComponent,
     FullPageComponent,
     TestingComponent,
+    MemberEditComponent,
+    PhotoEditorComponent,
+    TextInputComponent,
+    DateInputComponent,
+    MemberMessagesComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    UserManagementComponent,
+    PhotoManagementComponent,
+    RolesModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +76,9 @@ import { TestingComponent } from './testing/testing.component';
     FormsModule,
     HttpClientModule,
     SharedModule,
-    TabsModule.forRoot(),
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    PaginationModule.forRoot(),
   ],
   providers: [
     {
@@ -65,6 +89,11 @@ import { TestingComponent } from './testing/testing.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: jwtInerceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: loadingInterceptor,
       multi: true,
     },
   ],

@@ -1,9 +1,9 @@
-<div class="d-flex details" *ngIf="member">
+<div class="d-flex details">
     <div class="user-details">
         <div class="profile-container">
             <div class="profile-header">
                 <div class="action-buttons">
-                    <button class="btn btn-message">
+                    <button (click)="selectTab(3)" class="btn btn-message">
                         <i class="bi bi-envelope"></i>Message
                     </button>
                     <button class="btn btn-like">
@@ -19,56 +19,42 @@
 
 
             <div class="tab-content active">
-                <div class="profile-info">
-                    <div class="profile-info">
-                        <h2 class="info-title">Location</h2>
-                        <p class="info-value">Hatteras, Antigua and Barbuda</p>
+                <div class="mb-2" *ngIf="(presence.onlineUsers$|async).includes(member.userName)">
+                    <i class="fa fa-user-circle text-success mr-2"></i>Online now
+                </div>
+                <h2 class=" info-title">Location</h2>
+                <p class="info-value">{{member.city}} , {{member.country}}</p>
 
-                        <h2 class="info-title">Age</h2>
-                        <p class="info-value">70</p>
+                <h2 class="info-title">Age</h2>
+                <p class="info-value">{{member.age}}</p>
 
-                        <h2 class="info-title">Last Active</h2>
-                        <p class="info-value">June 13, 2020</p>
+                <h2 class="info-title">Last Active</h2>
+                <p class="info-value">{{member.lastActive | timeago}}</p>
 
-                        <h2 class="info-title">Member Since</h2>
-                        <p class="info-value">[Registration Date]</p>
+                <h2 class="info-title">Member Since</h2>
+                <p class="info-value">{{member.created | date:'dd MMM yyyy'}}</p>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-value">1,234</div>
+                        <div class="stat-label">Profile Views</div>
                     </div>
-
-                    <div class="stats-container">
-                        <div class="stat-box">
-                            <div class="stat-value">1,234</div>
-                            <div class="stat-label">Profile Views</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">56</div>
-                            <div class="stat-label">Likes</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">24</div>
-                            <div class="stat-label">Comments</div>
-                        </div>
+                    <div class="stat-box">
+                        <div class="stat-value">56</div>
+                        <div class="stat-label">Likes</div>
                     </div>
-                </div>
-
-                <div class="tab-content">
-                    Interests content will appear here
-                </div>
-
-                <div class="tab-content">
-                    Photo gallery will appear here
-                </div>
-
-                <div class="tab-content">
-                    Messages will appear here
+                    <div class="stat-box">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Comments</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="profile-tabs">
-        <tabset class="member-tabset">
-            <!-- About Tab -->
-            <tab heading="About {{member.knownAs}}" id="tab1" class="tab">
+        <tabset class="member-tabset" #memberTabs>
+            <tab heading="About {{member.knownAs}}" id="tab1" class="tab" (selectTab)="onTabActivated($event)">
                 <div class="profile-info">
                     <div class="info-section">
                         <h2 class="info-title">
@@ -86,7 +72,7 @@
                 </div>
             </tab>
 
-            <tab heading="Interests" id="tab2" class="tab">
+            <tab heading="Interests" id="tab2" class="tab" (selectTab)="onTabActivated($event)">
                 <div class="profile-info">
                     <div class="info-section">
                         <h2 class="info-title">
@@ -97,7 +83,7 @@
                 </div>
             </tab>
 
-            <tab heading="Photos" id="tab2" class="tab">
+            <tab heading="Photos" id="tab2" class="tab" (selectTab)="onTabActivated($event)">
                 <div class="profile-info">
                     <div class="info-section">
                         <h2 class="info-title">
@@ -111,13 +97,13 @@
             </tab>
 
 
-            <tab heading="Messages" id="tab2" class="tab">
+            <tab heading="Messages" id="tab2" class="tab" (selectTab)="onTabActivated($event)">
                 <div class="profile-info">
                     <div class="info-section">
                         <h2 class="info-title">
                             <i class="bi bi-chat"></i> Message
                         </h2>
-                        <p>Message will go here</p>
+                        <app-member-messages [username]="member.userName"></app-member-messages>
                     </div>
                 </div>
             </tab>

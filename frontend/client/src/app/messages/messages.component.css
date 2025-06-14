@@ -1,0 +1,10 @@
+.message-container {
+    margin-top: 20px;
+    margin-left: 40px;
+    width: 700px;
+    background-color: white;
+}
+
+.table tr th {
+    background-color: white;
+}

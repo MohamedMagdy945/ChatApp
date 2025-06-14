@@ -142,3 +142,34 @@
     font-weight: 600;
     background-color: transparent;
 }
+
+.auto-resize-textarea {
+    width: 100%;
+    min-height: 50px;
+    max-height: 200px;
+    /* اختياري */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    line-height: 1.5;
+    overflow-y: auto;
+    /* إظهار شريط التمرير عند الحاجة */
+    white-space: pre-wrap;
+    /* الحفاظ على فواصل الأسطر */
+    word-wrap: break-word;
+    /* كسر الكلمات الطويلة */
+    background-color: white;
+}
+
+.textarea-mimic:empty::before {
+    content: attr(placeholder);
+    color: gray;
+    pointer-events: none;
+}
+
+.textarea-mimic:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}

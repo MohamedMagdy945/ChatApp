@@ -1,3 +1,74 @@
-<div *ngFor="let member of members" class="member-list">
-    <app-member-card [member]="member"></app-member-card>
+<div class="container mt-4">
+    <div class="d-flex">
+        <div class="col-md-8">
+            <div class="text-center mb-4">
+                <h3 class="mytext-primary">Your Matches - {{pagination?.totalItems}} found</h3>
+            </div>
+
+            <div *ngFor="let member of members">
+                <app-member-card [member]="member"></app-member-card>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <pagination *ngIf="pagination" [totalItems]="pagination.totalItems" [boundaryLinks]="true"
+                    [itemsPerPage]="pagination.itemsPerPage" [(ngModel)]="pagination.currentPage"
+                    (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                    lastText="&raquo;">
+                </pagination>
+            </div>
+        </div>
+
+        <div class="card shadow-sm sticky-top col-md-8  align-self-start    " style="top: 20px;">
+            <div class="card-header" style="background-color: #00d26a; color: white;">
+                <h5 class="mb-0">Filters</h5>
+            </div>
+            <div class="card-body">
+                <form #form="ngForm" (ngSubmit)="loadMembers()" autocomplete="off">
+                    <div class="form-group">
+                        <label class="font-weight-bold">Age Range</label>
+                        <div class="d-flex align-items-center">
+                            <input type="number" class="form-control" name="minAge" [(ngModel)]="userParams.minAge"
+                                placeholder="Min" style="width: 80px;">
+                            <span class="px-2">to</span>
+                            <input type="number" class="form-control" name="maxAge" [(ngModel)]="userParams.maxAge"
+                                placeholder="Max" style="width: 80px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-weight-bold">Gender</label>
+                        <select [(ngModel)]="userParams.gender" name="gender" class="form-control" style="width: 100%;">
+                            <option *ngFor="let gender of genderList" [value]="gender.value">
+                                {{gender.display}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="font-weight-bold">Sort By</label>
+                        <div class="btn-group-vertical w-100">
+                            <button type="button" class="btn btn-outline-secondary text-left" name="orderBy"
+                                (click)="loadMembers()" btnRadio="lastActive" [(ngModel)]="userParams.orderBy">
+                                Last Active
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary text-left" name="orderBy"
+                                (click)="loadMembers()" btnRadio="created" [(ngModel)]="userParams.orderBy">
+                                Newest Members
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-4 d-flex justify-content-center">
+                        <button class="btn btn-custom btn-block mt-2" type="submit">
+                            Apply Filters
+                        </button>
+
+                        <button (click)="resetFilter()" class="btn btn-custom btn-block mt-2 ml-15" type="button">
+                            Reset Filters
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

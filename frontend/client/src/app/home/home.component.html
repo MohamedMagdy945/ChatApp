@@ -4,7 +4,7 @@
         <p class="subtitle">Connect. Chat. Enjoy.</p>
 
         <div class="buttons">
-            <button (click)="register()" class="btn primary">Register</button>
+            <button (click)="register()" class="btn primary" [disabled]="currentUser">Register</button>
             <button class="btn secondary">Read More</button>
         </div>
         <div class="features">

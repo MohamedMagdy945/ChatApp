@@ -5,3 +5,27 @@
     background-color: #fff;
     border-left: 1px solid #ddd;
 }
+
+.ml-3 {
+    margin-left: 10px;
+}
+
+.bg-primarywhite {
+    background-color: #fff;
+
+}
+
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #00d26a;
+    color: white;
+    border-color: #00d26a;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}

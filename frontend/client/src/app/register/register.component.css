@@ -8,25 +8,7 @@
   border-radius: 10px;
 }
 
-.btn-custom {
-  background-color: #00d26a;
-  color: white;
-  border-radius: 10px;
-}
 
-.back {
-  position: absolute;
-  right: 0;
-  top: 0;
-  border: 0px;
-  font-size: 20px;
-  background-color: white;
-}
-
-
-.btn-custom:hover {
-  background-color: #00b75a;
-}
 
 i {
   font-size: 28px;

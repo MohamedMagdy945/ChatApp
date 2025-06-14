@@ -1,6 +1,8 @@
 <div class="sidebar">
 
-
+    <div class="profile-pic" *ngIf="currentUser">
+        <img src="{{currentUser?.photoUrl || 'assets/user.png'}}" alt="Profile" class="rounded-circle">
+    </div>
     <div class="sidebar-icon">
         <button class="btn" routerLink="/home" routerLinkActive="active">
             <i class="bi bi-house-fill"></i>
@@ -19,15 +21,28 @@
         </button>
     </div>
 
+
+
     <div class="sidebar-icon">
         <button class="btn" routerLink="members" routerLinkActive="active">
             <i class="bi bi-people-fill"></i>
         </button>
     </div>
+    <div class="sidebar-icon">
+        <button class="btn" routerLink="list" routerLinkActive="active">
+            <i class="bi bi-heart-fill"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-icon" *appHasRole='["Admin","Moderator"]'>
+        <button class="btn" routerLink="admin" routerLinkActive="active">
+            <i class="bi bi-person-fill-gear"></i>
+        </button>
+    </div>
 
     <div class="sidebar-bottom text-center">
         <div class="sidebar-icon">
-            <button class="btn">
+            <button class="btn" routerLink="member/edit" routerLinkActive="active">
                 <i class="bi bi-gear-fill"></i>
             </button>
         </div>

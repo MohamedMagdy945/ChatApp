@@ -17,7 +17,7 @@
     </div>
     <div class="login-box" *ngIf="this.accountService.currentUser$|async">
         <h3 class="mb-4 text-center">User Information</h3>
-        <p><strong>Username:</strong> <span id="userDisplay">{{model.username}}</span></p>
+        <p><strong>Username:</strong> <span id="userDisplay">{{user.knownAs || user.userName |titlecase}}</span></p>
         <p><strong>Password:</strong> <span id="passowrd">**************</span></p>
         <p><strong>Status:</strong> Active</p>
         <button (click)="logout()" class="btn btn-custom w-100">Logout</button>

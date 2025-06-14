@@ -1,0 +1,109 @@
+<div class="d-flex details" *ngIf="member">
+    <div class="user-details">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="action-buttons">
+                    <button form="editForm" type="submit" class="btn btn-message" [disabled]="!editForm.dirty">
+                        <i class="bi bi-bookmark-fill"></i>Save Changes
+                    </button>
+                </div>
+                <div class="profile-avatar">
+                    <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
+                        class="card-img-top img-thumbnail">
+                </div>
+                <h1 class="profile-name">{{member.knownAs}}</h1>
+            </div>
+            <div class="tab-content active">
+                <h2 class="info-title">Location</h2>
+                <p class="info-value">{{member.city}}, {{member.country}} </p>
+
+                <h2 class="info-title">Age</h2>
+                <p class="info-value">{{member.age}}</p>
+
+                <h2 class="info-title">Last Active</h2>
+                <p class="info-value">{{member.lastActive | timeago}}</p>
+
+                <h2 class="info-title">Member Since</h2>
+                <p class="info-value">{{member.created | date:'dd MMM yyyy'}}</p>
+
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-value">1,234</div>
+                        <div class="stat-label">Profile Views</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">56</div>
+                        <div class="stat-label">Likes</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Comments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-tabs">
+
+        <div class="alert alert-info" *ngIf="editForm.dirty">
+            <strong>Information:</strong> You have made changes. Any unsaved changes will be lost
+        </div>
+
+        <tabset class="member-tabset">
+            <tab heading="About {{member.knownAs}}" id="tab1" class="tab">
+                <div class="profile-info">
+                    <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()">
+                        <div class="info-section">
+                            <h2 class="info-title">
+                                <i class="bi bi-card-text"></i> Description
+                            </h2>
+                            <textarea class="form-control" [(ngModel)]="member.introduction" name="introduction" id=""
+                                rows="6"></textarea>
+                        </div>
+                        <div class="info-section mt-4">
+                            <h2 class="info-title">
+                                <i class="bi bi-search"></i> Looking For
+                            </h2>
+                            <textarea class="form-control" [(ngModel)]="member.lookingFor" name="lookingFor" id=""
+                                rows="6"></textarea>
+                        </div>
+                        <div class="info-section mt-4">
+                            <h2 class="info-title">
+                                <i class="bi bi-card-checklist"></i> Interests
+                            </h2>
+                            <textarea class="form-control" [(ngModel)]="member.interests" name="interests" id=""
+                                rows="3"></textarea>
+                        </div>
+                        <div class="info-section mt-4">
+                            <h2 class="info-title">
+                                Location Details
+                            </h2>
+                            <div class="form-inline d-flex w-100">
+                                <div>
+                                    <label for="city" class="mt-2">City:</label>
+                                    <input [(ngModel)]="member.city" type="text" name="city" id="city"
+                                        class="form-control">
+                                </div>
+                                <div class="ml-2">
+                                    <label for="country" class="mt-2">Country:</label>
+                                    <input [(ngModel)]="member.country" type="text" name="country" id="country"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </tab>
+            <tab heading="Edit Photos" id="tab2" class="tab">
+                <div class="profile-info">
+                    <div class="info-section">
+
+                        <app-photo-editor [member]="member"></app-photo-editor>
+
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>

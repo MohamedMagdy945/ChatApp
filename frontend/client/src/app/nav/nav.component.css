@@ -62,3 +62,20 @@
 .active {
   background-color: #d7dbdf;
 }
+
+.profile-pic {
+  width: 45px;
+  height: 45px;
+  margin: 20px auto;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  width: auto;
+  /* يحافظ على نسبة العرض/الارتفاع */
+  max-width: 100%;
+  /* يمنع تجاوز حجم الصورة لعنصرها */
+  height: auto;
+}
